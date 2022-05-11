@@ -21,11 +21,15 @@ Route::get('/painel', function () {
     return view('painel/index');
 });
 
+
+
 Route::get('/', function () {
     return view('welcome');
 });
 
 Auth::routes();
+
+Route::get('/painel', [App\Http\Controllers\HomeController::class, 'index'])->name('painel');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

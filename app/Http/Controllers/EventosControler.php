@@ -57,7 +57,10 @@ public function novo() {
 
 
 
-
+    public function painel()
+    {
+        return view('admin.painel');
+    }
 
   }
 
