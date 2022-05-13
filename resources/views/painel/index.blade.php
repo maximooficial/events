@@ -482,60 +482,47 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!-- Card Body -->
+                                <!-- carousel  -->
                                 <div class="card-body">
                                     <div class="chart-area ">
-
-
-                                    <div id="carouselExampleSlidesOnly" class="carousel slide h-50 " data-ride="carousel">
+             <div id="carouselExampleSlidesOnly" class="carousel slide h-50 " data-ride="carousel">
   <div class="carousel-inner">
-
+  @foreach($eventos->slice(0, 1) as $evento)
     <div class="carousel-item active">
-      <img class="d-block w-100"
-     height="310" src="images/next1.jpg" alt="First slide">
-     <div class="carousel-caption d-none d-md-block">
+    <img class="d-block w-100" height="310"  src="images/{{$evento->imagem_1}}" alt="{{$evento->nome}}">
+     <div class="carousel-caption d-none d-md-block ">
      <header class="entry-header ">
-                            <h3 class="entry-title w-100 p-3" > <span class="badge badge-warning">{{'Conheça nossos ultimos eventos'}}</span>
-                              <br>  {{'local'}}   </h3>
-                               
-                            <span class="badge badge-dark">{{'20/05/2022'}} </span>
-
+            <h3 class="entry-title w-100 p-3 " > <span class="badge badge-warning">{{$evento->name}}</span>
+                              <br>   {{$evento->local}}                   </h3>
+                            <span class="badge badge-dark">{{$evento->data_inicio}} </span>
                         </header></a>
 
-  </div>
-    </div>
-    @foreach($eventos as $evento)
+      </div>
+    </div>  
+    @endforeach
+
+    @foreach($eventos->slice(1) as $evento)
     <div class="carousel-item">
       <img class="d-block w-100" height="310"  src="images/{{$evento->imagem_1}}" alt="{{$evento->nome}}">
       <div class="carousel-caption d-none d-md-block ">
       <header class="entry-header ">
-                            <h3 class="entry-title w-100 p-3" > <span class="badge badge-warning">{{$evento->name}}</span>
-                              <br>   {{$evento->local}} 
-                                                           </h3>
+            <h3 class="entry-title w-100 p-3" > <span class="badge badge-warning">{{$evento->name}}</span>
+                              <br>   {{$evento->local}} </h3>
                             <span class="badge badge-dark">{{$evento->data_inicio}} </span>
-
-
                         </header></a>
 
-
-  </div>
-    </div>            @endforeach
-
+      </div>
+    </div>   
+     @endforeach
   </div>
 </div>
-
-
-
-
-
-
-                                                                    <!-- Card Body -->
+ <!-- Card Body -->
 
                                                                    
-                                                                    </div>
-
+                         </div>
                         </div>
-                        </div>                            </div>
+                      </div>
+                    </div>
 
 
                         <!-- Pie Chart -->

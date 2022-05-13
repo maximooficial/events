@@ -8,7 +8,9 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Events') }}</title>
-    
+     <!-- Swiper CSS -->
+     <link rel="stylesheet" href="css/swiper.min.css">
+
     <!-- animacao css  -->
 
     <link
@@ -53,6 +55,10 @@
     <!-- Page level custom scripts -->
     <script src="admin/js/demo/chart-area-demo.js"></script>
     <script src="admin/js/demo/chart-pie-demo.js"></script>
+
+    <script type='text/javascript' src='js/swiper.min.js'></script>
+
+
 </body>
 
 </html>
