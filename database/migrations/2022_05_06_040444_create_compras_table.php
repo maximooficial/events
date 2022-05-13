@@ -15,15 +15,17 @@ class CreateComprasTable extends Migration
     {
         Schema::create('compras', function (Blueprint $table) {
             $table->id();
+            $table->integer('user_id')->unsigned();
             $table->integer('carteira_id')->unsigned();
-            $table->integer('cupom_id')->unsigned();
+            $table->integer('cupom_id')->nullable();
             $table->integer('eventos_id')->unsigned();
             $table->integer('ingressos_id')->unsigned();
             $table->string('codigo');
             $table->string('valor');
             $table->string('status');
-            $table->string('desconto');
-            $table->string('saldo');
+            $table->string('desconto')->nullable();
+            $table->string('saldo')->nullable();
+            $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('eventos_id')->references('id')->on('eventos');
             $table->foreign('cupom_id')->references('id')->on('cupom');
             $table->foreign('carteira_id')->references('id')->on('carteira');

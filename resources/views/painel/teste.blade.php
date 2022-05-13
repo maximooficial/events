@@ -8,3 +8,14 @@ hello word
 <br>
 
 <h3>Ola</h3> <h4>{{auth()->user()->name}}</h4>  
+
+@foreach($post as $pos)
+
+    <div class="carousel-item">
+      <img src="images/{{$pos->imagem_1}}" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="..." class="d-block w-100" alt="...">
+    </div>
+  </div>@endforeach
+

@@ -12,10 +12,12 @@
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-                <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
+                <div class="sidebar-brand-icon rotate-n-15 ">
+                    <i class="fas fa-laugh-wink animate__animated animate__tada animate__infinite animate__slower"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+                <div class="sidebar-brand-text mx-3 "    style="max-width: 11ch; overflow: hidden; width:7em;  white-space:nowrap;"><sup>Olá</sup> {{$name}}  </div>
+
+
             </a>
 
             <!-- Divider -->
@@ -36,7 +38,7 @@
                 Interface
             </div>
 
-
+            
           
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
@@ -312,7 +314,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{auth()->user()->name}}
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{auth()->user()->name}}  {{ Str::limit($valor, 1) }}
 </span>
                                 <img class="img-profile rounded-circle"
                                     src="{{auth()->user()->avatar}}">
@@ -377,19 +379,20 @@
                                             </div>
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
-                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"> {{$eventos}}</div>
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"> {{$countEventos}}  
+</div>
                                                 </div>
                                                 <div class="col">
                                                     <div class="progress progress-sm mr-2">
                                                         <div class="progress-bar bg-info" role="progressbar"
-                                                            style="width: 10%" aria-valuenow="50" aria-valuemin="0"
+                                                            style="width: {{$countEventos}}%" aria-valuenow="50" aria-valuemin="0"
                                                             aria-valuemax="100"></div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                            <i class="fas fa-calendar fa-2x text-gray-300 fa-beat-fade" style="--fa-beat-fade-opacity: 0.67"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -402,11 +405,11 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                            {{ __('total de eventos') }}</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $eventos }} </div>
+                                            {{ __('meus amigos') }}</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $amigos }} </div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                            <i class="fas fa fa-users fa-2x text-gray-300 fa-beat"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -425,7 +428,7 @@
                                             <div class="h5 mb-0 font-weight-bold text-gray-800"> {{ __('moeda') }} {{ $valor }} </div> 
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                            <i class="fas fa-dollar-sign fa-2x text-gray-300 fa-flip" style="--fa-animation-duration: 3s;"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -441,11 +444,11 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                                Pending Requests</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                                                Meus ingressos</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{$compras}}</div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-comments fa-2x text-gray-300"></i>
+                                            <i class="fa fa-ticket  fa-2x text-gray-300 fa-beat-fade" style="--fa-beat-fade-opacity: 0.67"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -463,7 +466,7 @@
                                 <!-- Card Header - Dropdown -->
                                 <div
                                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">{{'Fique por dentro '}}</h6>
                                     <div class="dropdown no-arrow">
                                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -481,12 +484,59 @@
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
-                                    <div class="chart-area">
-                                        <canvas id="myAreaChart"></canvas>
-                                    </div>
-                                </div>
-                            </div>
+                                    <div class="chart-area ">
+
+
+                                    <div id="carouselExampleSlidesOnly" class="carousel slide h-50 " data-ride="carousel">
+  <div class="carousel-inner">
+
+    <div class="carousel-item active">
+      <img class="d-block w-100"
+     height="310" src="images/next1.jpg" alt="First slide">
+     <div class="carousel-caption d-none d-md-block">
+     <header class="entry-header ">
+                            <h3 class="entry-title w-100 p-3" > <span class="badge badge-warning">{{'Conheça nossos ultimos eventos'}}</span>
+                              <br>  {{'local'}}   </h3>
+                               
+                            <span class="badge badge-dark">{{'20/05/2022'}} </span>
+
+                        </header></a>
+
+  </div>
+    </div>
+    @foreach($eventos as $evento)
+    <div class="carousel-item">
+      <img class="d-block w-100" height="310"  src="images/{{$evento->imagem_1}}" alt="{{$evento->nome}}">
+      <div class="carousel-caption d-none d-md-block ">
+      <header class="entry-header ">
+                            <h3 class="entry-title w-100 p-3" > <span class="badge badge-warning">{{$evento->name}}</span>
+                              <br>   {{$evento->local}} 
+                                                           </h3>
+                            <span class="badge badge-dark">{{$evento->data_inicio}} </span>
+
+
+                        </header></a>
+
+
+  </div>
+    </div>            @endforeach
+
+  </div>
+</div>
+
+
+
+
+
+
+                                                                    <!-- Card Body -->
+
+                                                                   
+                                                                    </div>
+
                         </div>
+                        </div>                            </div>
+
 
                         <!-- Pie Chart -->
                         <div class="col-xl-4 col-lg-5">
