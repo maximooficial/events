@@ -1,4 +1,15 @@
 {
+
+
+    "Configuracao": "Configurações",
+    "Perfil": "Perfil",
+    "Atividades": "Atividades",
+    "Painel": "Painel",
+    "moeda": "R$",
+    "total de eventos": "total de eventos",
+
+
+
     "Name": "Nome",
     "E-Mail Address": "Digite seu E-mail",
     "Password": "Senha",

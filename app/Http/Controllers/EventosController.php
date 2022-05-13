@@ -15,7 +15,7 @@ use App\Models\Post;
 use App\Models\Categoria;
 
 
-class EventosControler extends Controller
+class EventosController extends Controller
 {
 
 // mostrando eventos 
@@ -57,10 +57,6 @@ public function novo() {
 
 
 
-    public function painel()
-    {
-        return view('admin.painel');
-    }
-
+  
   }
 

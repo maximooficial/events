@@ -23,7 +23,7 @@ class CreateIngressosTable extends Migration
             $table->string('desconto');
             $table->string('codigo');
             $table->string('status');
-            $table->foreign('ingressos_id')->references('id')->on('eventos');
+            $table->foreign('ingressos_id')->references('id')->on('grupo');
 
             $table->timestamps();
         });

@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\EventosControler;
+use App\Http\Controllers\EventosController;
+use App\Http\Controllers\PainelController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,12 +16,9 @@ use App\Http\Controllers\EventosControler;
 */
 
 
-Route::get('/eventos', [EventosControler::class, 'index']); 
-Route::get('/eventos/novo', [EventosControler::class, 'novo']); 
+Route::get('/eventos', [EventosController::class, 'index']); 
+Route::get('/eventos/novo', [EventosController::class, 'novo']); 
 
-Route::get('/painel', function () {
-    return view('painel/index');
-});
 
 
 
@@ -29,7 +28,11 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/painel', [App\Http\Controllers\HomeController::class, 'index'])->name('painel');
+// rotas do painel 
+Route::get('/teste', [App\Http\Controllers\PainelController::class, 'teste'])->name('teste');
+
+Route::get('/painel', [App\Http\Controllers\PainelController::class, 'painel'])->name('painel');
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

@@ -16,8 +16,8 @@ class CreateEventosTable extends Migration
         Schema::create('eventos', function (Blueprint $table) {
             
             $table->increments('id')->unsigned();
+            $table->string('user_id')->nullable();
             $table->integer('eventos_id')->unsigned();
-
             $table->string('name');
             $table->string('link');
             $table->string('local');
@@ -43,6 +43,7 @@ class CreateEventosTable extends Migration
             $table->date('data_inicio')->nullable();
             $table->date('data_final')->nullable();
 
+            $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('eventos_id')->references('id')->on('grupos');
 
             $table->timestamps();
