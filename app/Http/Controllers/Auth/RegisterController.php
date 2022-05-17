@@ -70,6 +70,11 @@ class RegisterController extends Controller
             'celular' => $data['celular'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-        ]);
+        ])->givePermissionTo('user');
+        event(new Registered($user));
+
+    Auth::login($user);
+
+    return redirect(RouteServiceProvider::HOME);
     }
 }

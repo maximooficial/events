@@ -3,13 +3,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Events') }}</title>
-     <!-- Swiper CSS -->
-     <link rel="stylesheet" href="css/swiper.min.css">
 
     <!-- animacao css  -->
 
@@ -32,11 +30,16 @@
 </head>
 <body>
    
+<div class="p-6 bg-white border-b border-gray-200">
+    @can('user')
+    <meta http-equiv="refresh" content="0;url=eventos">
 
-        <main class="">
-            @yield('content')
+    @elsecan('admin')
+    <main class="">
+            @yield('content')  
         </main>
-
+    @endcan
+       
 
 
    <!-- Bootstrap core JavaScript-->
@@ -55,9 +58,9 @@
     <!-- Page level custom scripts -->
     <script src="admin/js/demo/chart-area-demo.js"></script>
     <script src="admin/js/demo/chart-pie-demo.js"></script>
-
-    <script type='text/javascript' src='js/swiper.min.js'></script>
-
+    <script src="https://pagead2.googlesyndication.com/pagead/managed/js/adsense/m202205100101/show_ads_impl_fy2019.js" id="google_shimpl"></script><script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"></script>
+ 
 
 </body>
 

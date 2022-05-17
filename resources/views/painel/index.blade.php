@@ -2,6 +2,7 @@
 
 @section('content')
 
+</div>
 <body id="page-top">
 
     <!-- Page Wrapper -->
@@ -15,7 +16,7 @@
                 <div class="sidebar-brand-icon rotate-n-15 ">
                     <i class="fas fa-laugh-wink animate__animated animate__tada animate__infinite animate__slower"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3 "    style="max-width: 11ch; overflow: hidden; width:7em;  white-space:nowrap;"><sup>Olá</sup> {{$name}}  </div>
+                <div class="sidebar-brand-text mx-3 "    style="max-width: 11ch; overflow: hidden; width:7em;  white-space:nowrap;"><sup>Olá</sup>   </div>
 
 
             </a>
@@ -314,7 +315,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{auth()->user()->name}}  {{ Str::limit($valor, 1) }}
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{auth()->user()->name}}   {{ Str::limit($valor, 1) }}
 </span>
                                 <img class="img-profile rounded-circle"
                                     src="{{auth()->user()->avatar}}">
@@ -466,7 +467,7 @@
                                 <!-- Card Header - Dropdown -->
                                 <div
                                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">{{'Fique por dentro '}}</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">{{__('Ultimos Eventos')}}</h6>
                                     <div class="dropdown no-arrow">
                                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -474,9 +475,9 @@
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
                                             aria-labelledby="dropdownMenuLink">
-                                            <div class="dropdown-header">Dropdown Header:</div>
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
+                                            <div class="dropdown-header">Mais Informações:</div>
+                                            <a class="dropdown-item" href="#">Clima Tempo</a>
+                                            <a class="dropdown-item" href="https://www.otempo.pt/" traget=_black>O Tempo</a>
                                             <div class="dropdown-divider"></div>
                                             <a class="dropdown-item" href="#">Something else here</a>
                                         </div>
@@ -516,22 +517,21 @@
      @endforeach
   </div>
 </div>
- <!-- Card Body -->
-
-                                                                   
-                         </div>
+</div>
                         </div>
-                      </div>
-                    </div>
-
-
-                        <!-- Pie Chart -->
+                      </div> 
+                        </div>
+ <!-- Card Body -->
+                                             
+                        
+ 
+                    <!-- Pie Chart Clima Tempo -->
                         <div class="col-xl-4 col-lg-5">
                             <div class="card shadow mb-4">
-                                <!-- Card Header - Dropdown -->
+                                <!-- Card Header - menu clima tempo -->
                                 <div
                                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Revenue Sources</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">{{config('appSettings.ClimaTitulo')}}</h6>
                                     <div class="dropdown no-arrow">
                                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -539,34 +539,22 @@
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
                                             aria-labelledby="dropdownMenuLink">
-                                            <div class="dropdown-header">Dropdown Header:</div>
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
+                                            <div class="dropdown-header">{{config('appSettings.ClimaTitulomenu')}}:</div>
+                                            <a class="dropdown-item" target="_blank" href="{{config('appSettings.ClimaLink1')}}">{{config('appSettings.Clima1')}}</a>
+                                            <a class="dropdown-item" target="_blank" href="{{config('appSettings.ClimaLink2')}}">{{config('appSettings.Clima2')}}</a>
                                             <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="#">Something else here</a>
+                                            <a class="dropdown-item" target="_blank" href="{{config('appSettings.ClimaLink3')}}">{{config('appSettings.Clima3')}}</a>
                                         </div>
                                     </div>
                                 </div>
-                                <!-- Card Body -->
-                                <div class="card-body">
-                                    <div class="chart-pie pt-4 pb-2">
-                                        <canvas id="myPieChart"></canvas>
-                                    </div>
-                                    <div class="mt-4 text-center small">
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle text-primary"></i> Direct
-                                        </span>
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle text-success"></i> Social
-                                        </span>
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle text-info"></i> Referral
-                                        </span>
-                                    </div>
+                                <!-- Clima tempo -->
+                                <div class="card-body mx-auto " >
+                                <iframe  src="{{config('appSettings.climaiframe')}}" frameborder="0" scrolling="no" width="100%" height="312" allowTransparency="true" ></iframe>
+</div>                          </div>
+
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                       
 
                     <!-- Content Row -->
                     <div class="row">
@@ -577,109 +565,37 @@
                             <!-- Project Card Example -->
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Projects</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">{{config('appSettings.moedastitulo')}}</h6>
                                 </div>
                                 <div class="card-body">
-                                    <h4 class="small font-weight-bold">Server Migration <span
-                                            class="float-right">20%</span></h4>
+                                    <h4 class="small font-weight-bold"> {{$titulomoedas}} <span
+                                            class="float-right">{{$moedas}}</span></h4>
                                     <div class="progress mb-4">
-                                        <div class="progress-bar bg-danger" role="progressbar" style="width: 20%"
-                                            aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                                        <div class="progress-bar bg-success" role="progressbar" style="width: {{$moedas}}%"
+                                            aria-valuenow="{{$moedas}}" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
-                                    <h4 class="small font-weight-bold">Sales Tracking <span
-                                            class="float-right">40%</span></h4>
+                                    <h4 class="small font-weight-bold">{{$titulocompartilhamentos}} <span
+                                            class="float-right">{{$compartilhamentos}}</span></h4>
                                     <div class="progress mb-4">
-                                        <div class="progress-bar bg-warning" role="progressbar" style="width: 40%"
-                                            aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                                        <div class="progress-bar bg-warning" role="progressbar" style="width: {{$compartilhamentos}}%"
+                                            aria-valuenow="{{$compartilhamentos}}" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
-                                    <h4 class="small font-weight-bold">Customer Database <span
-                                            class="float-right">60%</span></h4>
+                                    <h4 class="small font-weight-bold">{{$titulomoedasusadas}} <span
+                                            class="float-right">{{$moedasusadas}}</span></h4>
                                     <div class="progress mb-4">
-                                        <div class="progress-bar" role="progressbar" style="width: 60%"
-                                            aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                        <div class="progress-bar bg-secondary" role="progressbar" style="width: {{$moedasusadas}}%"
+                                            aria-valuenow="{{$moedasusadas}}" aria-valuemin="0" aria-valuemax="200"></div>
                                     </div>
-                                    <h4 class="small font-weight-bold">Payout Details <span
-                                            class="float-right">80%</span></h4>
+                                    <h4 class="small font-weight-bold">{{$titulocompartilhamentosUsados}} <span
+                                            class="float-right">{{$compartilhamentosUsados}}</span></h4>
                                     <div class="progress mb-4">
-                                        <div class="progress-bar bg-info" role="progressbar" style="width: 80%"
-                                            aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                    <h4 class="small font-weight-bold">Account Setup <span
-                                            class="float-right">Complete!</span></h4>
-                                    <div class="progress">
-                                        <div class="progress-bar bg-success" role="progressbar" style="width: 100%"
+                                        <div class="progress-bar bg-info" role="progressbar" style="width: {{$compartilhamentosUsados}}%"
                                             aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- Color System -->
-                            <div class="row">
-                                <div class="col-lg-6 mb-4">
-                                    <div class="card bg-primary text-white shadow">
-                                        <div class="card-body">
-                                            Primary
-                                            <div class="text-white-50 small">#4e73df</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 mb-4">
-                                    <div class="card bg-success text-white shadow">
-                                        <div class="card-body">
-                                            Success
-                                            <div class="text-white-50 small">#1cc88a</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 mb-4">
-                                    <div class="card bg-info text-white shadow">
-                                        <div class="card-body">
-                                            Info
-                                            <div class="text-white-50 small">#36b9cc</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 mb-4">
-                                    <div class="card bg-warning text-white shadow">
-                                        <div class="card-body">
-                                            Warning
-                                            <div class="text-white-50 small">#f6c23e</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 mb-4">
-                                    <div class="card bg-danger text-white shadow">
-                                        <div class="card-body">
-                                            Danger
-                                            <div class="text-white-50 small">#e74a3b</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 mb-4">
-                                    <div class="card bg-secondary text-white shadow">
-                                        <div class="card-body">
-                                            Secondary
-                                            <div class="text-white-50 small">#858796</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 mb-4">
-                                    <div class="card bg-light text-black shadow">
-                                        <div class="card-body">
-                                            Light
-                                            <div class="text-black-50 small">#f8f9fc</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 mb-4">
-                                    <div class="card bg-dark text-white shadow">
-                                        <div class="card-body">
-                                            Dark
-                                            <div class="text-white-50 small">#5a5c69</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                           
 
                         </div>
 
@@ -688,45 +604,83 @@
                             <!-- Illustrations -->
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Illustrations</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Galeria de Fotos</h6>
                                 </div>
                                 <div class="card-body">
-                                    <div class="text-center">
-                                        <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
-                                            src="img/undraw_posting_photo.svg" alt="...">
-                                    </div>
-                                    <p>Add some quality, svg illustrations to your project courtesy of <a
-                                            target="_blank" rel="nofollow" href="https://undraw.co/">unDraw</a>, a
-                                        constantly updated collection of beautiful svg images that you can use
-                                        completely free and without attribution!</p>
-                                    <a target="_blank" rel="nofollow" href="https://undraw.co/">Browse Illustrations on
-                                        unDraw &rarr;</a>
-                                </div>
-                            </div>
+             <div id="carouselExampleSlidesOnly" class="carousel slide h-50 " data-ride="carousel">
+  <div class="carousel-inner">
+  @foreach($eventos->slice(0, 1) as $evento)
+    <div class="carousel-item active">
+    <img class="d-block w-100" height="310"  src="images/{{$evento->imagem_1}}" alt="{{$evento->nome}}">
+     <div class="carousel-caption d-none d-md-block ">
+     <header class="entry-header ">
+            <h3 class="entry-title w-100 p-3 " > <span class="badge badge-warning">{{$evento->name}}</span>
+                              <br>   {{$evento->local}}                   </h3>
+                            <span class="badge badge-dark">{{$evento->data_inicio}} </span>
+                        </header></a>
 
-                            <!-- Approach -->
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Development Approach</h6>
-                                </div>
-                                <div class="card-body">
-                                    <p>SB Admin 2 makes extensive use of Bootstrap 4 utility classes in order to reduce
-                                        CSS bloat and poor page performance. Custom CSS classes are used to create
-                                        custom components and custom utility classes.</p>
-                                    <p class="mb-0">Before working with this theme, you should become familiar with the
-                                        Bootstrap framework, especially the utility classes.</p>
-                                </div>
-                            </div>
+      </div>
+    </div>  
+    @endforeach
 
-                        </div>
-                    </div>
+    @foreach($eventos->slice(1) as $evento)
+    <div class="carousel-item">
+      <img class="d-block w-100" height="310"  src="images/{{$evento->imagem_1}}" alt="{{$evento->nome}}">
+      <div class="carousel-caption d-none d-md-block ">
+      <header class="entry-header ">
+            <h3 class="entry-title w-100 p-3" > <span class="badge badge-warning">{{$evento->name}}</span>
+                              <br>   {{$evento->local}} </h3>
+                            <span class="badge badge-dark">{{$evento->data_inicio}} </span>
+                        </header></a>
 
-                </div>
+           </div>
+          </div>   
+     @endforeach
+       </div>
+     </div> 
+   </div>
+ </div>
+</div>
+</div>
+
+<!-- Publicações -->
+<div class="card shadow mb-2 mx-auto" width="728">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Publicações</h6> </div>
+    <div class="container mx-auto" >
+<div id="news-slider" class="owl-carousel py-5 mx-auto" >    @foreach($postGeral as $post)
+<div class="post-slide pl-sm col-sm my-auto  "  width="315" >
+<a href="{{$post->link}}" class="read">
+<div class="post-img " width="310" >
+<img src="images/{{$post->imagem_1}}" alt="">
+<span class="icons">
+<img src="img/perfil/{{$post->avatar}}" alt="">
+</span>
+</div>
+<div class="post-review">
+<ul class="post-bar">
+<li><i class="fa fa-calendar"></i>{{ $post->created_at}}
+</li><br>
+<li><i class="fa fa-user"></i> </li>{{$post->name}}
+</ul>
+<h3 class="post-title">{{$post->nome}}</h3>
+<p class="post-description">{{$post->descricao}} </p>
+<a href="{{$post->link}}" class="read">Leia Mais<i class="fa fa-angle-right"></i></a>
+</div>
+</div>
+@endforeach
+</a>
+            </div>
+        </div>
+    </div>
+</div>                                   <!-- Fim das Publicações -->
+
                 <!-- /.container-fluid -->
 
             </div>
             <!-- End of Main Content -->
 
+            
             <!-- Footer -->
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
@@ -767,6 +721,9 @@
             </div>
         </div>
     </div>
+    </div>
+                    </div>
+
     @endsection
 
   

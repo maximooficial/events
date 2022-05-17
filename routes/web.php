@@ -30,8 +30,10 @@ Auth::routes();
 
 // rotas do painel 
 Route::get('/teste', [App\Http\Controllers\PainelController::class, 'teste'])->name('teste');
+Auth::routes();
 
 Route::get('/painel', [App\Http\Controllers\PainelController::class, 'painel'])->name('painel');
+Auth::routes();
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
