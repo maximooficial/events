@@ -13,6 +13,7 @@ use App\Models\Evento;
 use Str;
 use Auth;
 use DB;
+use DateTime;
 
 
 use App\Models\Settings;
@@ -56,7 +57,7 @@ class PainelController extends Controller
 // quantidade de eventos
 
 //$eventos = Evento::orderBy('id', 'DESC' )  // ordenar por 
-//->where('user_id', Auth::user()->id) // onde 
+//->where('post_id', Auth::user()->id) // onde 
 //->get();          //buscar     
 //$eventos = $eventos->count('id');
 //dd($valor);
@@ -76,17 +77,34 @@ class PainelController extends Controller
 
     public function painel()
     {
-        
+       //$usuario = Post::with('user')->get('post_id');
+       $user = Auth::user();
+       $id = Auth::id();
+      //dd($usuario);
+      $mensagens = DB::table('amigos')
+         ->where('amigos.user_id', '=', Auth::id())
+         ->join('users', 'amigos.amigo_id', '=', 'users.id')
+
+            //->join('amigos', 'users.id', '=', 'amigos.user_id')
+           ->join('posts', 'amigos.amigo_id', '=', 'posts.post_id')
+           ->join('eventos', 'amigos.amigo_id', '=', 'eventos.user_id')
+
+           //->select('users.id', 'amigos.user_id', 'posts.post_id')
+     ->get();
+   $mensagenscount = $mensagens->count('id');
+      /*$now = new DateTime();
+     $now = $mensagens;
+
+     $now->dataDetail()->whereDate('created_at', '2017-01-13')->toArray();
+    dd($now); */
+
      $postGeral = DB::table('posts')
             ->leftJoin('users', 'users.id', '=', 'posts.post_id')
             ->get();
           //  dd($postGeral);
 
 
-       //$usuario = Post::with('user')->get('post_id');
-       $user = Auth::user();
-       $id = Auth::id();
-      //dd($usuario);
+       
 
 
          $post = Post::orderBy('id', 'DESC')
@@ -162,8 +180,10 @@ return view('painel.index', array(
             'titulomoedasusadas' => $titulomoedasusadas,
             'titulocompartilhamentosUsados' => $titulocompartilhamentosUsados,
             'postGeral' => $postGeral,
-            'id' => $id,
+            'mensagens' => $mensagens,
+                        'mensagenscount' => $mensagenscount,
 
+            
 
 
         ));
