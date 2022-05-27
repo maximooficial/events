@@ -18,7 +18,7 @@ class CreateEventosTable extends Migration
             $table->increments('id')->unsigned();
             $table->string('user_id')->nullable();
             $table->integer('eventos_id')->unsigned();
-            $table->string('name');
+            $table->string('evento_nome');
             $table->string('link');
             $table->string('local');
             $table->text('descricao');

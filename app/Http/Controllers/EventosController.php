@@ -48,7 +48,7 @@ public function novo() {
 
     $eventos =Eventos::all();
     
-    return view('eventos',
+    return view('painel/evento',
     ['eventos' =>$eventos,
     
     

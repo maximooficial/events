@@ -3,26 +3,60 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Evento;
+use App\Models\Settings;
+use Illuminate\Support\Facades\Schema;
+use App\Models\Parceiro;
+use App\Models\MenuTwo;
+use App\Models\MenuOne;
+use App\Models\Slide;
+use App\Models\Post;
+use App\Models\Categoria;
+
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
+
+   
+   
+// mostrando eventos 
+public function index() {
+
+    
+  
+$parceiros =Parceiro::all();
+$eventos =Evento::all();
+$MenuTwo =MenuTwo::all();
+$MenuOne =MenuOne::all();
+$slides =Slide::all();
+$post =Post::all();
+$categoria =Categoria::all();
+
+
+return view('home',
+['eventos' =>$eventos,
+'parceiros' =>$parceiros,
+'MenuTwo' =>$MenuTwo,
+'MenuOne' =>$MenuOne,
+'slides' =>$slides,
+'posts' =>$post,
+'categorias' =>$categoria,
+
+
+]);  
+}
+
+//criando eventos 
+public function novo() {
+
+    $eventos =Eventos::all();
+    
+    return view('',
+    ['eventos' =>$eventos,
+    
+    
+    ]);  
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function index()
-    {
-        return view('home');
-    }
-}
+  }
+

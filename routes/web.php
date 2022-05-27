@@ -19,38 +19,24 @@ use App\Http\Controllers\PainelController;
 Route::get('/eventos', [EventosController::class, 'index']); 
 Route::get('/eventos/novo', [EventosController::class, 'novo']); 
 
-
-
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
 // rotas do painel 
-Route::get('/teste', [App\Http\Controllers\PainelController::class, 'teste'])->name('teste');
-Auth::routes();
 
 Route::get('/painel', [App\Http\Controllers\PainelController::class, 'painel'])->name('painel');
 Auth::routes();
 
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
+Route::get('/criareventos', [App\Http\Controllers\PainelController::class, 'eventos'])->name('criareventos');
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Route::get('/criareventos', [App\Http\Controllers\PainelController::class, 'painel'])->name('criareventos');
+//Auth::routes();
 
+Route::post('/enviareventos', [App\Http\Controllers\PainelController::class, 'store'])->name('enviareventos');
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
